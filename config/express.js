@@ -28,7 +28,6 @@ module.exports = () => {
 
     //Routes e afins
     require('../routes/model')(app);
-    //require('../routes/auth')(app);
-
+    
     return app;
 };

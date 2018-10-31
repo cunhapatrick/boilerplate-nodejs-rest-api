@@ -1,18 +1,21 @@
+const mongoose = require('mongoose')
+
 class Model {
 
     constructor(collection) {
 
         this.collection = collection
 
-        this.mongoose = require('mongoose')
-
+        this.mongoose = mongoose
     }
 
-    collectionName() {
+    collectionName = () => {
+
         return this.collection
+    
     }
 
-    model(fields = undefined) {
+    model = (fields = undefined) => {
 
         const Schema = this.mongoose.Schema
 
@@ -21,7 +24,9 @@ class Model {
             return this.mongoose.modelNames().find(collectionName => collectionName === this.collection) ? this.mongoose.model(this.collection) : this.mongoose.model(this.collection, {})
 
         } else {
-            let moment = require('moment')
+            
+            import moment from 'moment'
+
             let schemaAttr = {}, schema
 
             Object.keys(fields).map(name => {
@@ -39,7 +44,9 @@ class Model {
             schemaAttr.updated_at = { type: Date, default: Date.now }
 
             schema = new Schema(schemaAttr, {
+
                 versionKey: false
+
             })
 
             if (this.mongoose.modelNames().find(collectionName => collectionName === this.collection)) {
