@@ -2,7 +2,7 @@
   "name": "boilerplate-nodejs-express-api",
   "version": "1.0.0",
   "private": true,
-  "description": "",
+  "description": "boilerplate criado com as configurações básicas de uma API usando nodejs com express escrito com ecmascript 2017",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

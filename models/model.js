@@ -1,13 +1,12 @@
-import mongoose from 'mongoose'
+import {Schema,modelNames,model,models} from 'mongoose'
 import moment from 'moment'
 
-class Model {
+export default class Model {
 
     constructor(collection) {
 
         this.collection = collection
 
-        this.mongoose = mongoose
     }
 
     collectionName() {
@@ -18,15 +17,12 @@ class Model {
 
     model(fields = undefined){
 
-        const Schema = this.mongoose.Schema
-
         if (typeof fields === "undefined") {
 
-            return this.mongoose.modelNames().find(collectionName => collectionName === this.collection) ? this.mongoose.model(this.collection) : this.mongoose.model(this.collection, {})
+            return modelNames().find(collectionName => collectionName === this.collection) ? model(this.collection) : this.mongoose.model(this.collection, {})
 
         } else {
             
-
             let schemaAttr = {}, schema
 
             Object.keys(fields).map(name => {
@@ -49,19 +45,17 @@ class Model {
 
             })
 
-            if (this.mongoose.modelNames().find(collectionName => collectionName === this.collection)) {
+            if (modelNames().find(collectionName => collectionName === this.collection)) {
 
-                delete this.mongoose.models[this.collection]
+                delete models[this.collection]
 
-                return this.mongoose.model(this.collection, schema)
+                return model(this.collection, schema)
 
             } else {
 
-                return this.mongoose.model(this.collection, schema)
+                return model(this.collection, schema)
 
             }
         }
     }
 }
-
-module.exports = Model

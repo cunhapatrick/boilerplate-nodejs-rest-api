@@ -1,8 +1,9 @@
 //const Mongoose = require('../models/model')
-const Model = require('../models/model')
+import Model from '../models/model'
+import moment from 'moment'
 const ObjectId = require("mongoose").Types.ObjectId
 
-class ModelController extends Model {
+export default class ModelController extends Model {
 
     constructor(req) {
 
@@ -25,17 +26,13 @@ class ModelController extends Model {
 
     insert() {
 
-        let model = this.model(this.req.body)
-
-        const document = new model(this.req.body)
+        const document = new ( this.model(this.req.body) )(this.req.body)
 
         return document.save().then(save => save)
 
     }
 
     updateOne() {
-
-        const moment = require('moment')
 
         let model = this.model(this.req.body)
 
@@ -66,5 +63,3 @@ class ModelController extends Model {
     }
 
 }
-
-module.exports = ModelController

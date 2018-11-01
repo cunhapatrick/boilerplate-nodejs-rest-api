@@ -1,11 +1,10 @@
-class User {
-    constructor() {
-        this.mongoose = require('mongoose')
-        this.Schema = this.mongoose.Schema
-    }
+//import mongoose,{Schema} from 'mongoose'
+import {Schema,model,modelNames} from 'mongoose'
+
+export default class User {
 
     model() {
-        const userSchema = new this.Schema({
+        const userSchema = new Schema({
 
             local: {
                 email: String,
@@ -47,10 +46,8 @@ class User {
                 versionKey: false
             })
 
-        if (this.mongoose.modelNames().find(collectionName => collectionName === 'user')) return this.mongoose.model('user')
-        else return this.mongoose.model('user', userSchema)
+        if (modelNames().find(collectionName => collectionName === 'users')) return model('users')
+        else return model('users', userSchema)
 
     }
 }
-
-module.exports = User;

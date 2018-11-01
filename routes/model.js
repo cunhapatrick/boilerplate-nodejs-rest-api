@@ -1,6 +1,5 @@
-const ModelController = require('../controllers/model')
-
-const AuthController = require('../controllers/auth')
+import ModelController from '../controllers/model';
+import AuthController from '../controllers/auth';
 
 //app = express
 module.exports = app => {
