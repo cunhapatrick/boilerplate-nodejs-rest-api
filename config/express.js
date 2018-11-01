@@ -1,8 +1,19 @@
-const express = require('express');
-const cors = require('cors')
+import express, { json } from 'express'
+import cors from 'cors'
+import { config } from 'dotenv'
+import moment from 'moment'
 
-const app = express();
-module.exports = () => {
+config({
+    path: 'config/env/.env',
+    silent: true
+});
+
+let port
+
+if (process.env.NODE_ENV === "development") port = process.env.DEV_PORT
+else port = process.env.PORT
+
+const app = express()
 
     //view engine
     //app.engine('html', require('ejs').renderFile);
@@ -12,7 +23,7 @@ module.exports = () => {
     //app.use(logger('dev'));
 
     //request body em json
-    app.use(express.json())
+    app.use(json())
 
     //Accept request of all origins
     app.use(cors())
@@ -29,5 +40,17 @@ module.exports = () => {
     //Routes e afins
     require('../routes/model')(app);
     
-    return app;
-};
+    app.listen(port)
+
+    //import and initialize mongodb(uncomment db command lines below)
+    //const db = require('./config/mongoose')()
+
+    //check if database is connected
+    //db.once('open', () => console.log('Database is Online'))
+
+    //check any database error on connection
+    //db.on('err', err => console.log(err))
+    
+    console.log(`Onpass is listening on port ${port}.... DATETIME: ${moment().format('DD/MM/YYYY hh:mm:ss a')}`)
+
+    export default app

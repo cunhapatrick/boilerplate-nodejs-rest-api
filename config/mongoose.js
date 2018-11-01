@@ -1,9 +1,8 @@
-const mongoose = require('mongoose')
-const dotenv = require('dotenv')
+import { connect, connection } from 'mongoose';
+import { config as _config } from 'dotenv';
 
-dotenv.config({ path: './config/env/.env', silent: true });
+_config({ path: './config/env/.env', silent: true });
 
-module.exports = () => {
     let uri
     if (process.env.NODE_ENV == 'development') uri = `mongodb://${process.env.DEV_DB_USER}:${process.env.DEV_DB_PASSWORD}@${process.env.DEV_DB_HOST}:${process.env.DEV_DB_PORT}/${process.env.DEV_DB_NAME}`
     else uri = `mongodb://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`
@@ -25,7 +24,5 @@ module.exports = () => {
     }
 
     //let db = mongoose.createConnection(config.db,config.dbOptions)
-    mongoose.connect(config.db, config.dbOptions)
-    let db = mongoose.connection
-    return db
-}
+    connect(config.db, config.dbOptions)
+    export default connection

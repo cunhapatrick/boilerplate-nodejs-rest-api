@@ -6,8 +6,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rimraf dist/ && babel ./ --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log,./.gitignore --copy-files",
-    "start": "npm run build && node dist/server.js",
+    "start": "node server.js",
     "debug": "DEBUG=express:* nodemon",
     "windows-debug": "set DEBUG=express:* & nodemon"
   },
@@ -27,6 +26,8 @@
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "debug": "^4.1.0",
     "morgan": "^1.9.1",

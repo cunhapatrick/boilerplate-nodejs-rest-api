@@ -22,7 +22,7 @@ class authController {
 
     }
 
-    localAuth = async () => {
+    async localAuth(){
 
         const UserModel = require('../models/User')
 

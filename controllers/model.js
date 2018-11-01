@@ -12,18 +12,18 @@ class ModelController extends Model {
 
     }
 
-    selectAll = () => {
+    selectAll() {
         return this.model().find()
 
     }
 
-    selectOne = () => {
+    selectOne() {
 
         return this.model().findById(this.req.params.id)
 
     }
 
-    insert = () => {
+    insert() {
 
         let model = this.model(this.req.body)
 
@@ -33,7 +33,7 @@ class ModelController extends Model {
 
     }
 
-    updateOne = () => {
+    updateOne() {
 
         const moment = require('moment')
 
@@ -53,7 +53,7 @@ class ModelController extends Model {
 
     }
 
-    deleteOne = () => {
+    deleteOne() {
 
         this.model().deleteOne({ _id: ObjectId() }, err => {
 

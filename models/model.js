@@ -1,4 +1,5 @@
-const mongoose = require('mongoose')
+import mongoose from 'mongoose'
+import moment from 'moment'
 
 class Model {
 
@@ -9,13 +10,13 @@ class Model {
         this.mongoose = mongoose
     }
 
-    collectionName = () => {
+    collectionName() {
 
         return this.collection
     
     }
 
-    model = (fields = undefined) => {
+    model(fields = undefined){
 
         const Schema = this.mongoose.Schema
 
@@ -25,7 +26,6 @@ class Model {
 
         } else {
             
-            import moment from 'moment'
 
             let schemaAttr = {}, schema
 
