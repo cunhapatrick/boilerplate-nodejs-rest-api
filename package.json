@@ -8,7 +8,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "debug": "DEBUG=express:* nodemon",
-    "windows-debug": "set DEBUG=express:* & nodemon"
+    "windows-debug": "set DEBUG=express:* & nodemon",
+    "mount": "sh scripts/mount.sh",
+    "passwordGenerate": "node scripts/passwordGenerate.js",
+    "appSecretGenerate": "node scripts/appSecretGenerate.js"
   },
   "keywords": [],
   "author": "Patrick D Paulo Baia Cunha",
