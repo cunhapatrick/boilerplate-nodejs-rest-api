@@ -16,6 +16,9 @@ git remote add origin ${args[1]}
 
 cd ../..
 
+json -I -f package.json -e 'this.name="'+${args[0]}+'"'
+json -I -f package.json -e 'this.description=""'
+
 echo "Boilerplate montado com Sucesso"
 
 node server.js
