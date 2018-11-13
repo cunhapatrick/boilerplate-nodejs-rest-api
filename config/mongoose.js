@@ -1,4 +1,4 @@
-import { connect, connection } from 'mongoose';
+import mongoose from 'mongoose';
 import { config as _config } from 'dotenv';
 
 _config({ path: './config/env/.env', silent: true });
@@ -24,5 +24,5 @@ _config({ path: './config/env/.env', silent: true });
     }
 
     //let db = mongoose.createConnection(config.db,config.dbOptions)
-    connect(config.db, config.dbOptions)
-    export default connection
+    mongoose.connect(config.db, config.dbOptions)
+    export default mongoose.connection
