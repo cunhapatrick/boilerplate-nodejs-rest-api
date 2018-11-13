@@ -1,4 +1,4 @@
-import {Schema,modelNames,model,models} from 'mongoose'
+import mongoose from 'mongoose'
 import moment from 'moment'
 
 export default class Model {
@@ -19,7 +19,7 @@ export default class Model {
 
         if (typeof fields === "undefined") {
 
-            return modelNames().find(collectionName => collectionName === this.collection) ? model(this.collection) : this.mongoose.model(this.collection, {})
+            return mongoose.modelNames().find(collectionName => collectionName === this.collection) ? mongoose.model(this.collection) : mongoose.model(this.collection, {})
 
         } else {
             
@@ -39,21 +39,17 @@ export default class Model {
 
             schemaAttr.updated_at = { type: Date, default: Date.now }
 
-            schema = new Schema(schemaAttr, {
+            schema = new Schema(schemaAttr)
 
-                versionKey: false
+            if (mongoose.modelNames().find(collectionName => collectionName === this.collection)) {
 
-            })
+                delete mongoose.models[this.collection]
 
-            if (modelNames().find(collectionName => collectionName === this.collection)) {
-
-                delete models[this.collection]
-
-                return model(this.collection, schema)
+                return mongoose.model(this.collection, schema)
 
             } else {
 
-                return model(this.collection, schema)
+                return mongoose.model(this.collection, schema)
 
             }
         }

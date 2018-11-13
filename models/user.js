@@ -1,10 +1,10 @@
-//import mongoose,{Schema} from 'mongoose'
-import {Schema,model,modelNames} from 'mongoose'
+import mongoose from 'mongoose'
+
 
 export default class User {
 
     model() {
-        const userSchema = new Schema({
+        const userSchema = new mongoose.Schema({
 
             local: {
                 email: String,
@@ -42,12 +42,10 @@ export default class User {
                 type: Date,
                 default: Date.now
             }
-        }, {
-                versionKey: false
-            })
+        })
 
-        if (modelNames().find(collectionName => collectionName === 'users')) return model('users')
-        else return model('users', userSchema)
+        if (mongoose.modelNames().find(collectionName => collectionName === 'users')) return mongoose.model('users')
+        else return mongoose.model('users', userSchema)
 
     }
 }
