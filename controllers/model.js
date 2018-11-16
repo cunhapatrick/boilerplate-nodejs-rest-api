@@ -20,7 +20,7 @@ export default class ModelController extends Model {
 
     selectOne() {
 
-        return this.model().findById(this.req.params.id)
+        return this.model().find(this.req.query)
 
     }
 
