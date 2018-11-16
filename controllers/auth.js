@@ -1,5 +1,5 @@
 import { compareSync } from 'bcrypt-nodejs';
-
+import { model } from '../models/user' 
 export default class authController {
 
     constructor(req) {
@@ -24,9 +24,7 @@ export default class authController {
 
     async localAuth(){
 
-        const userModel = new ( require('../models/user') )()
-
-        const User = userModel.model()
+        const User = model()
 
         let user = await User.findOne({ "local.email": this.req.headers.email })
 
