@@ -43,13 +43,13 @@ const app = express()
     app.listen(port)
 
     //import and initialize mongodb(uncomment db command lines below)
-    //import db from './config/mongoose'
+    import db from './config/mongoose'
 
     //check if database is connected
-    //db.once('open', () => console.log('Database is Online'))
+    db.once('open', () => console.log('Database is Online'))
 
     //check any database error on connection
-    //db.on('err', err => console.log(err))
+    db.on('err', err => console.log(err))
     
     console.log(`Onpass is listening on port ${port}.... DATETIME: ${moment().format('DD/MM/YYYY hh:mm:ss a')}`)
 
