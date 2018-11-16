@@ -1,4 +1,5 @@
 import { compareSync } from 'bcrypt-nodejs';
+import userModel from '../model/user'
 
 export default class authController {
 
@@ -23,8 +24,6 @@ export default class authController {
     }
 
     async localAuth(){
-
-        const userModel = new ( require('../models/User') )()
 
         const User = userModel.model()
 
