@@ -13,10 +13,7 @@ export default class ModelController extends Model {
 
     }
 
-    selectAll() {
-        return this.model().find()
-
-    }
+    selectAll = () => this.model().find()
 
     selectOne() {
 
