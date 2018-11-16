@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 const {env} = process
 
 let uri
-    
+
 if (env.NODE_ENV == 'development') uri = `mongodb://${env.DEV_DB_USER}:${env.DEV_DB_PASSWORD}@${env.DEV_DB_HOST}:${env.DEV_DB_PORT}/${env.DEV_DB_NAME}`
 else uri = `mongodb://${env.DB_USER}:${env.DB_PASSWORD}@${env.DB_HOST}:${env.DB_PORT}/${env.DB_NAME}`
 

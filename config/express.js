@@ -9,40 +9,40 @@ else port = process.env.PORT
 
 const app = express()
 
-    //view engine
-    //app.engine('html', require('ejs').renderFile);
-    app.set('view engine', 'ejs'); //This line set the view engine or simply presentation factor to EJS which is responsible for HTML rendering.
+//view engine
+//app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'ejs'); //This line set the view engine or simply presentation factor to EJS which is responsible for HTML rendering.
 
-    //request logger on terminal
-    //app.use(logger('dev'));
+//request logger on terminal
+//app.use(logger('dev'));
 
-    //request body em json
-    app.use(json())
+//request body em json
+app.use(json())
 
-    //Accept request of all origins
-    app.use(cors())
+//Accept request of all origins
+app.use(cors())
 
-    //request body urlencoded
-    //app.use(express.urlencoded({extended:false}))
+//request body urlencoded
+//app.use(express.urlencoded({extended:false}))
 
-    //configuração de cookies
-    //app.use(cookieParser())
+//configuração de cookies
+//app.use(cookieParser())
 
-    //Views path, 2 parameter string or array of strings
-    app.set('views', 'views')
+//Views path, 2 parameter string or array of strings
+app.set('views', 'views')
 
-    //Routes e afins
-    require('../routes/model')(app);
-    
-    const server = app.listen(port, () => console.log(`Onpass is listening on port ${port}.... DATETIME: ${moment().format('DD/MM/YYYY hh:mm:ss a')}`))
+//Routes e afins
+require('../routes/model')(app);
 
-    //import and initialize mongodb(uncomment db command lines below)
-    //import db from './mongoose'
+const server = app.listen(port, () => console.log(`Onpass is listening on port ${port}.... DATETIME: ${moment().format('DD/MM/YYYY hh:mm:ss a')}`))
 
-    //check if database is connected
-    //db.once('open', () => console.log('Database is Online'))
+//import and initialize mongodb(uncomment db command lines below)
+import db from './mongoose'
 
-    //check any database error on connection
-    //db.on('err', err => console.log(err))
+//check if database is connected
+db.once('open', () => console.log('Database is Online'))
 
-    export default app
+//check any database error on connection
+db.on('err', err => console.log(err))
+
+export default app
