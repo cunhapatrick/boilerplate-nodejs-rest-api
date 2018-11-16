@@ -11,9 +11,9 @@ export default class ModelController extends Model {
 
         this.req = req
 
+        this.selectAll = () => this.model().find()
     }
 
-    selectAll = () => this.model().find()
 
     selectOne() {
 
