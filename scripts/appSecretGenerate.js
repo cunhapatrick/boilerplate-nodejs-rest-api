@@ -1,15 +1,11 @@
 const bcrypt = require('bcrypt-nodejs')
-const { config } = require('dotenv')
-const fs = require('fs')
-
-config({path: '../config/env/.env'})
 
 const { argv,env } = process
 
-if (argv.length !== 3) return console.log('Por favor passe a senha como argumento!');
+if (argv.length !== 4) return console.log('Por favor passe a senha como argumento!');
 
 
-const senha = argv[2];
+const senha = argv[3];
 
 console.log('Gerando hash...');
 

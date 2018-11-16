@@ -1,12 +1,6 @@
 import express, { json } from 'express'
 import cors from 'cors'
-import { config } from 'dotenv'
 import moment from 'moment'
-
-config({
-    path: 'config/env/.env',
-    silent: true
-});
 
 let port
 
