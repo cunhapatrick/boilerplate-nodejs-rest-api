@@ -17,6 +17,10 @@
   "author": "Patrick D Paulo Baia Cunha",
   "license": "ISC",
   "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
     "bcrypt-nodejs": "0.0.3",
     "cors": "^2.8.4",
     "dotenv": "^6.1.0",
@@ -28,10 +32,6 @@
     "rimraf": "^2.6.2"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.3",
-    "babel-polyfill": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
     "debug": "^4.1.0",
     "morgan": "^1.9.1",
     "nodemon": "^1.18.5"
