@@ -6,12 +6,12 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
+    "start": "node -r dotenv/config server.js dotenv_config_path=config/env/.env",
     "debug": "DEBUG=express:* nodemon",
     "windows-debug": "set DEBUG=express:* & nodemon",
     "mount": "sh scripts/mount.sh",
-    "passwordGenerate": "node scripts/passwordGenerate.js",
-    "appSecretGenerate": "node scripts/appSecretGenerate.js"
+    "passwordGenerate": "node -r dotenv/config scripts/passwordGenerate.js dotenv_config_path=config/env/.env",
+    "appSecretGenerate": "node -r dotenv/config scripts/appSecretGenerate.js dotenv_config_path=config/env/.env"
   },
   "keywords": [],
   "author": "Patrick D Paulo Baia Cunha",
