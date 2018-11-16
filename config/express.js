@@ -43,7 +43,7 @@ const app = express()
     app.listen(port)
 
     //import and initialize mongodb(uncomment db command lines below)
-    import db from './config/mongoose'
+    import db from './mongoose'
 
     //check if database is connected
     db.once('open', () => console.log('Database is Online'))
