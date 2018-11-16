@@ -29,7 +29,7 @@ module.exports = app => {
 
     })
 
-        .get( async (req,res) => res.json( await req.modelController.selectAny() ) )
+        .get( async (req,res) => res.json( await req.modelController.selectAny ) )
 
         .put( async (req,res) => res.json( await req.modelController.update() ) )
 
