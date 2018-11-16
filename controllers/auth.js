@@ -24,7 +24,7 @@ export default class authController {
 
     async localAuth(){
 
-        const userModel = new ( require('../models/User') )()
+        const userModel = new ( require('../models/user') )()
 
         const User = userModel.model()
 
