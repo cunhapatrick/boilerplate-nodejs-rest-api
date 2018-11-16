@@ -29,11 +29,11 @@ module.exports = app => {
 
     })
 
-        .get( async (req,res) => res.json( await req.modelController.selectOne() ) )
+        .get( async (req,res) => res.json( await req.modelController.selectAny() ) )
 
-        .put( async (req,res) => res.json( await req.modelController.updateOne() ) )
+        .put( async (req,res) => res.json( await req.modelController.update() ) )
 
-        .delete( async (req,res) => res.json( await req.modelController.deleteOne() ) )
+        .delete( async (req,res) => res.json( await req.modelController.delete() ) )
 
     app.route('/v1/a/:collection').all(async (req, res, next) => {
 
@@ -54,6 +54,6 @@ module.exports = app => {
     })
         .get( async (req,res) => res.json( await req.modelController.selectAll() ) )
 
-        .post( async (req,res) => res.json( await req.modelController.insert() ) )
+        .post( async (req,res) => res.json( await req.modelController.store() ) )
 
 }
