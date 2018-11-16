@@ -34,7 +34,7 @@ const app = express()
     //Routes e afins
     require('../routes/model')(app);
     
-    app.listen(port)
+    const server = app.listen(port, () => console.log(`Onpass is listening on port ${port}.... DATETIME: ${moment().format('DD/MM/YYYY hh:mm:ss a')}`))
 
     //import and initialize mongodb(uncomment db command lines below)
     //import db from './mongoose'
@@ -44,7 +44,5 @@ const app = express()
 
     //check any database error on connection
     //db.on('err', err => console.log(err))
-    
-    console.log(`Onpass is listening on port ${port}.... DATETIME: ${moment().format('DD/MM/YYYY hh:mm:ss a')}`)
 
     export default app

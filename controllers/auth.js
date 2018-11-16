@@ -1,5 +1,5 @@
 import { compareSync } from 'bcrypt-nodejs';
-import userModel from '../model/user'
+import userModel from '../models/user'
 
 export default class authController {
 
@@ -11,9 +11,9 @@ export default class authController {
 
     verifyAuth() {
 
-        const type = this.req.headers.authtype
+        const {authtype} = this.req.headers
 
-        switch (type) {
+        switch (authtype) {
 
             case "local": return this.localAuth()
 
@@ -24,14 +24,15 @@ export default class authController {
     }
 
     async localAuth(){
+        const {email,password} = this.req.headers
 
         const User = userModel.model()
 
-        let user = await User.findOne({ "local.email": this.req.headers.email })
+        let user = await User.findOne({ "local.email": email })
 
         if (typeof user === null) return { "error": "Invalid email" }
 
-        else if (!compareSync(this.req.headers.password + process.env.APP_SECRET, user.local.password)) return { "error": "Invalid password" }
+        else if (!compareSync( password + process.env.APP_SECRET, user.local.password)) return { "error": "Invalid password" }
 
         else return true
 

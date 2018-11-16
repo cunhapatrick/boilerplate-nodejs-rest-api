@@ -6,9 +6,9 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node -r dotenv/config server.js dotenv_config_path=config/env/.env",
-    "debug": "DEBUG=express:* nodemon",
-    "windows-debug": "set DEBUG=express:* & nodemon",
+    "start": "nodemon -r dotenv/config server.js dotenv_config_path=config/env/.env",
+    "debug": "DEBUG=express:* npm start",
+    "windows-debug": "set DEBUG=express:* & npm start",
     "mount": "sh scripts/mount.sh",
     "passwordGenerate": "node -r dotenv/config scripts/passwordGenerate.js dotenv_config_path=config/env/.env",
     "appSecretGenerate": "node -r dotenv/config scripts/appSecretGenerate.js dotenv_config_path=config/env/.env"
