@@ -2,11 +2,11 @@ const bcrypt = require('bcrypt-nodejs')
 const { config } = require('dotenv')
 const fs = require('fs')
 
+config({path: '../config/env/.env'})
+
 const { argv,env } = process
 
 if (argv.length !== 3) return console.log('Por favor passe a senha como argumento!');
-
-config({path: '../config/env/.env'})
 
 const senha = argv[2];
 
