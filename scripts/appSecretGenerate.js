@@ -4,7 +4,6 @@ const { argv,env } = process
 
 if (argv.length !== 4) return console.log('Por favor passe a senha como argumento!');
 
-
 const senha = argv[3];
 
 console.log('Gerando hash...');

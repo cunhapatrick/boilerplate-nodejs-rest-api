@@ -1,8 +1,10 @@
 import mongoose from 'mongoose'
+const {env} = process
 
 let uri
-if (process.env.NODE_ENV == 'development') uri = `mongodb://${process.env.DEV_DB_USER}:${process.env.DEV_DB_PASSWORD}@${process.env.DEV_DB_HOST}:${process.env.DEV_DB_PORT}/${process.env.DEV_DB_NAME}`
-else uri = `mongodb://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`
+
+if (env.NODE_ENV == 'development') uri = `mongodb://${env.DEV_DB_USER}:${env.DEV_DB_PASSWORD}@${env.DEV_DB_HOST}:${env.DEV_DB_PORT}/${env.DEV_DB_NAME}`
+else uri = `mongodb://${env.DB_USER}:${env.DB_PASSWORD}@${env.DB_HOST}:${env.DB_PORT}/${env.DB_NAME}`
 
 const config = {
     db: uri,

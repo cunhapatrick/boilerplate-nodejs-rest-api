@@ -3,7 +3,7 @@ import mongoose from 'mongoose'
 
 export default class User {
 
-   static model() {
+    static model() {
         const userSchema = new mongoose.Schema({
 
             local: {
