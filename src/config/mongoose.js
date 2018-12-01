@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+const { connect, connection } = require('mongoose')
 const { env } = process
 
 let uri
@@ -30,8 +30,8 @@ const config = {
 }
 
 // let db = mongoose.createConnection(config.db,config.dbOptions)
-mongoose.connect(
+connect(
   config.db,
   config.dbOptions
 )
-module.exports = mongoose.connection
+module.exports = connection

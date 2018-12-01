@@ -2,11 +2,11 @@ const bcrypt = require('bcrypt-nodejs')
 
 const { argv } = process
 
-if (argv.length !== 4) {
+if (argv.length !== 3) {
   throw new Error('Por favor passe a senha como argumento!')
 }
 
-const senha = argv[3]
+const senha = argv[2]
 const hash = bcrypt.hashSync(senha)
 
 console.log('Gerando hash...')

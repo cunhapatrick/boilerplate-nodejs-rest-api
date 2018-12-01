@@ -32,9 +32,7 @@ class Model {
           ).isValid()
             ? Date
             : String
-        }
-        // other types
-        else schemaAttr[name] = typeof fields[name]
+        } else schemaAttr[name] = typeof fields[name]
       })
 
       schemaAttr.created_at = { type: Date, default: Date.now }
