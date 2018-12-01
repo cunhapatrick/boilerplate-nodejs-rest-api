@@ -31,7 +31,7 @@ class App {
         saveUninitialized: true
       })
     )
-    // this.express.use(require(`../middlewares/v0/auth`))
+    this.express.use(require(`../middlewares/v0/auth`))
   }
 
   view () {
