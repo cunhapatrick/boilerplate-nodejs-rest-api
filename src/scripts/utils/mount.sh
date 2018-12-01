@@ -4,7 +4,8 @@
 
 args=("$@")
 
-npm i
+rm -rf package-lock.json
+yarn
 
 cd ..
 mv boilerplate-api-nodejs backend

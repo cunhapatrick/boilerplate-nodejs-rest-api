@@ -1,3 +1,14 @@
-require('babel-core/register')
-require('babel-polyfill')
-require('./config/express.js')
+const server = require('./src/config/express.js')
+
+const { NODE_ENV } = process.env
+
+let port
+
+if (NODE_ENV === 'development') port = process.env.DEV_PORT
+else port = process.env.PORT
+
+server.listen(port || 3000, () =>
+  console.log(
+    `Server is running on ${NODE_ENV} enviromnent on uri http://localhost:${port}`
+  )
+)
