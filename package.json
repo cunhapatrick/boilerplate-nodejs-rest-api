@@ -28,6 +28,7 @@
     "moment": "^2.22.2",
     "mongoose": "^5.3.8",
     "node-cron": "^2.0.3",
+    "redis": "^2.8.0",
     "rimraf": "^2.6.2",
     "session-file-store": "^1.2.0"
   },
