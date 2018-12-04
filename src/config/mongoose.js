@@ -1,22 +1,14 @@
 const { connect, connection } = require('mongoose')
 const { env } = process
 
-let uri
-
-if (env.NODE_ENV === 'development') {
-  uri = `mongodb://${env.DEV_DB_USER}:${env.DEV_DB_PASSWORD}@${
-    env.DEV_DB_HOST
-  }:${env.DEV_DB_PORT}/${env.DEV_DB_NAME}`
-} else {
-  uri = `mongodb://${env.DB_USER}:${env.DB_PASSWORD}@${env.DB_HOST}:${
-    env.DB_PORT
-  }/${env.DB_NAME}`
-}
-
+const uri = `mongodb://${env.DB_USER}:${env.DB_PASS}@${env.DB_HOST}:${
+  env.DB_PORT
+}/${env.DB_NAME}`
 const config = {
   db: uri,
   dbOptions: {
     useNewUrlParser: true,
+    useCreateIndex: true,
     // autoIndex: false, // Don't build indexes (verificar com carinho para ganhar performance em production)
     reconnectTries: Number.MAX_VALUE, // Never stop trying to reconnect
     reconnectInterval: 500, // Reconnect every 500ms

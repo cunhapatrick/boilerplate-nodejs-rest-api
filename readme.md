@@ -2,7 +2,7 @@
 
 ## Description
 
-This boilerPlate have all the primary configurations to start a nodejs API with Express and MongoDB with the initial settings
+This boilerPlate have all the primary configurations to start a nodejs API RESTFULL with Express and MongoDB with the initial settings
 
 ## Repository URL
 
@@ -13,28 +13,54 @@ https://github.com/cunhapatrick/boilerplate-nodejs.git
 run `yarn mount aplication_name Online_Repository_URL`
 run `yarn appSecretGenerate keyword` , copy the hash inside .env variable APP_SECRET
 
-## Download MongoDB (development)
+## Database Configuration (MongoDB)
 
-go to https://www.mongodb.com/download-center/community and follow instructions to download
-or download docker mongodb container inside develop enviroment
-or go to https://mlab.com/home and create a database
-after download and installation, create a database with users collection
+- Follow one of those instructions
+  1. [MongoDB](https://www.mongodb.com/download-center/community)
+  - Follow the instructions to download and install on your local machine
+  - run `mongo` on terminal to iniciate mongo shell
+  - run on mongo shell `use database_name`
+  - `db.create({user: "username",pwd:"userpassword",roles:"readWrite",db:"databasename"})`, remember to change the `username`,`pwd` and `db` values
+  - Now set the credential values of the mongodb inside src/config/env/.env
+  2. [Docker](https://hub.docker.com/)
+  - Create a account and follow the instructions to download the docker cli to your local machine
+  - After the download and install follow those [instructions](https://hub.docker.com/_/mongo/)
+  - Create a database and it's user
+  - Now set the credentials inside src/config/env/.env
+  3. [Mlab](https://mlab.com/home)
+  - Create a account
+  - Create a database and a database user
+  - set the credentials inside src/config/env/.env
+  4. [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
+  - Create a account
+  - Create a database and a database user
+  - set the credentials inside src/config/env/.env
 
-## Create Database User
+## Redis Configuration
 
-run commands `mongo` to iniciate mongo shell
-run commands inside mongo shell `use database_name` ,`db.createUser({user: "username",pwd:"userpassword",roles:[{role:"readWrite",db:"databasename"}]})` , changing the username, userpassword and databasename to the respective data of your project
+- Follow one of those instructions
 
-## Initial Database Configuration
+1. [Docker](https://hub.docker.com/)
 
-After create the database and it's user, goto .env file and inform the data
-goto server.js on project root and uncomment the const db and it's listener
+- Follow those [instruction](https://hub.docker.com/_/redis/)
+- Set the credentials to .env file
 
-```
-const db = require('./src/config/mongoose')
-db.once('open', () => console.log('Database is Online'))
-db.on('err', err => console.log(err))
-```
+2. [Redis Server](https://redis.io/download)
+
+- Download and configure redis to your local machine
+- Set the .env file with the credentials (Obs: The .env.example already have the default credentials)
+
+## Uncomment Database
+
+goto src/config/server.js and uncomment `this.database`
+
+## Mail Configuration
+
+To development a recommend use [mailtrap](https://mailtrap.io), make a account and get the smtp credentials and instance in the respective enviromnent variables
+
+## Exception Error Config
+
+To production error monitoring, I used (Sentry)[https://sentry.io], create a account and create a project, after that get the credentials data and put inside .env respective variables
 
 ## Init Server
 

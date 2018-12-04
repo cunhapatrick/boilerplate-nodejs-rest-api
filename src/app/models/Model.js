@@ -20,8 +20,6 @@ class Model {
     } else {
       let schemaAttr = {}
 
-      let schema
-
       Object.keys(fields).map(name => {
         // check if field is string or date
         if (typeof fields[name] === 'string') {
@@ -36,10 +34,14 @@ class Model {
       })
 
       schemaAttr.created_at = { type: Date, default: Date.now }
-
       schemaAttr.updated_at = { type: Date, default: Date.now }
 
-      schema = new mongoose.Schema(schemaAttr)
+      const schema = new mongoose.Schema(schemaAttr)
+      schema.plugin(require('mongoose-paginate'))
+
+      schema.pre('findOneAndUpdate', async function (next) {
+        this.updated_at = Date.now()
+      })
 
       if (
         mongoose
