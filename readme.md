@@ -4,9 +4,7 @@
 
 This boilerPlate have all the primary configurations to start a nodejs API RESTFULL with Express and MongoDB with the initial settings
 
-## Repository URL
-
-https://github.com/cunhapatrick/boilerplate-nodejs.git
+## [Repository URL](https://cunhapatrick.github.io/boilerplate-nodejs/)
 
 ## Initial env Settings
 
