@@ -5,16 +5,16 @@ const { argv } = process
 const { APP_SECRET } = process.env
 
 if (argv.length !== 3) {
-  throw new Error('Por favor passe a senha como argumento!')
+  throw new Error('Please, input the password as argument!')
 }
 
 if (!APP_SECRET || APP_SECRET === '') {
-  throw new Error('APP_SECRET não definido como variável de ambiente (env)')
+  throw new Error('APP_SECRET not defined on enviromnent file (.env)')
 }
 
 const senha = argv[2]
 
-console.log('Gerando hash...')
+console.log('Generate hash...')
 
 const hash = bcrypt.hashSync(senha + APP_SECRET)
 
