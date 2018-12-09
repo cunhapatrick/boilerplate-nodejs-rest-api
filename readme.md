@@ -1,4 +1,4 @@
-# BoilerPlate API Nodejs
+# BoilerPlate Javascript API Nodejs
 
 ## Description
 
